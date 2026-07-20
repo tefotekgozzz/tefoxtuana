@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tefo ❤️ Tuana</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1920&auto=format&fit=crop') center center/cover no-repeat;
+position:relative;
+cursor:none;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(2px);
+}
+
+.center{
+position:relative;
+z-index:10;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.big-heart{
+font-size:110px;
+animation:beat 1.5s infinite;
+filter:drop-shadow(0 0 20px #ff5fa2);
+}
+
+@keyframes beat{
+50%{
+transform:scale(1.15);
+}
+}
+
+h1{
+font-size:85px;
+text-shadow:0 0 25px rgba(255,255,255,.9);
+}
+
+h2{
+font-size:30px;
+margin-top:10px;
+font-weight:400;
+}
+
+.love-text{
+margin-top:20px;
+font-size:22px;
+color:#ffd6e8;
+}
+
+.message{
+position:absolute;
+color:white;
+font-size:26px;
+font-weight:bold;
+white-space:nowrap;
+text-shadow:0 0 15px rgba(255,192,203,1);
+animation:moveAcross linear forwards;
+z-index:5;
+}
+
+@keyframes moveAcross{
+0%{
+left:-100%;
+opacity:0;
+}
+10%{
+opacity:1;
+}
+90%{
+opacity:1;
+}
+100%{
+left:120%;
+opacity:0;
+}
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.2;
+}
+}
+
+.mouse-heart{
+position:fixed;
+pointer-events:none;
+z-index:9999;
+font-size:24px;
+transition:all 1.2s ease-out;
+}
+
+</style>
+</head>
+<body>
+
+<div class="center">
+
+<div class="big-heart">❤️</div>
+
+<h1>Tefo ❤️ Tuana</h1>
+
+<h2>Sen Benim En Güzel Hikâyemsin</h2>
+
+<div class="love-text">
+Sonsuza kadar kalbimde yaşayacaksın...
+</div>
+
+</div>
+
+<script>
+
+const messages = [
+
+"Tuana ❤️ Seni Çok Seviyorum",
+"İyi Ki Varsın Güzelim 🌹",
+"Prensesim 👑",
+"Kraliçem ❤️",
+"Bir Tanem 💕",
+"Kurban Olduğum Güzelim 🥰",
+"Hayatımın Anlamı Sensin ❤️",
+"Gözlerimin İçi ✨",
+"Kuzummm 💖",
+"Çiçeğim 🌷",
+"Sen Gülünce Dünya Güzelleşiyor 🌹",
+"Kalbimin Tek Sahibi Sensin ❤️",
+"Her Gün Sana Yeniden Aşık Oluyorum 💘",
+"İyi Ki Benimsin 💕",
+"Mutluluğum Sensin ❤️",
+"Seninle Her Şey Daha Güzel 🌙"
+
+];
+
+function createMessage(){
+
+const msg=document.createElement("div");
+
+msg.className="message";
+
+msg.innerHTML=
+messages[Math.floor(Math.random()*messages.length)];
+
+msg.style.top=Math.random()*90+"%";
+msg.style.animationDuration=
+(10+Math.random()*8)+"s";
+
+document.body.appendChild(msg);
+
+setTimeout(()=>{
+msg.remove();
+},18000);
+
+}
+
+setInterval(createMessage,1200);
+
+for(let i=0;i<200;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+const size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDelay=
+Math.random()*2+"s";
+
+document.body.appendChild(star);
+
+}
+
+document.addEventListener("mousemove",function(e){
+
+const heart=document.createElement("div");
+
+heart.className="mouse-heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.style.transform=
+`translate(${(Math.random()*120)-60}px,-120px) scale(0.3)`;
+
+heart.style.opacity="0";
+
+},10);
+
+setTimeout(()=>{
+heart.remove();
+},1200);
+
+});
+
+</script>
+
+</body>
+</html>
